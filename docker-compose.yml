@@ -1,0 +1,48 @@
+version: '3.2'
+networks: 
+  dev: 
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+services: 
+  gateway:
+    image: u03013112/ss-gateway
+    container_name: 'gateway'
+    tty: true
+    restart: always
+    ports:
+      - 18021:8081
+    networks:
+      - dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+  config:
+    image: u03013112/ss-config
+    container_name: 'config'
+    restart: always
+    depends_on: 
+      - mysql
+    tty: true
+    networks:
+      - dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
+  mysql:
+    image: u03013112/mysql
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
+    volumes:
+      - .data/mysql:/var/lib/mysql
+    container_name: 'mysql'
+    restart: always
+    ports:
+      - 127.0.0.1:3306:3306
+    networks: 
+      - dev
+
