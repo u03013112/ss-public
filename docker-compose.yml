@@ -34,6 +34,20 @@ services:
       options:
         max-size: "10m"
         max-file: "1"
+  user:
+    image: u03013112/ss-user
+    container_name: 'user'
+    restart: always
+    depends_on: 
+      - mysql
+    tty: true
+    networks:
+      - dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
   mysql:
     image: mysql:5
     command: --character-set-server=utf8 --collation-server=utf8_general_ci
