@@ -48,6 +48,20 @@ services:
       options:
         max-size: "10m"
         max-file: "1"
+  ios:
+    image: u03013112/ss-ios
+    container_name: 'ios'
+    restart: always
+    depends_on: 
+      - mysql
+    tty: true
+    networks:
+      - dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
   mysql:
     image: mysql:5
     command: --character-set-server=utf8 --collation-server=utf8_general_ci
