@@ -77,4 +77,19 @@ services:
       - 127.0.0.1:3306:3306
     networks: 
       - dev
+  nginx:
+    image: nginx:alpine
+    container_name: 'ng4ss'
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d
+    ports:
+      - 18022:443
+    networks:
+    - dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
