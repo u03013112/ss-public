@@ -56,7 +56,7 @@ services:
       - mysql
     tty: true
     environment:
-      - SANDBOX:TRUE
+      - SANDBOX=TRUE
     networks:
       - dev
     logging:
