@@ -102,6 +102,7 @@ services:
     restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d
+      - ./htmls:/htmls
     ports:
       - 18022:443
     networks:
