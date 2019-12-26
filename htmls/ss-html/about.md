@@ -20,8 +20,6 @@
 
 `油管`：https://www.youtube.com
 
-`P站`：https://www.pornhub.com
-
 ## 如果有问题，请联系客服 ##
 
 客服人员还在招募中，请耐心等候。
