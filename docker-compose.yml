@@ -112,11 +112,14 @@ services:
       options:
         max-size: "10m"
         max-file: "1"
+
   selenium-hub:
     image: selenium/hub:3.141.59-yttrium
     # container_name: selenium-hub
     ports:
       - "4443:4444"
+    networks: 
+      - dev
   chrome:
     image: selenium/node-chrome:3.141.59-yttrium
     volumes:
@@ -126,6 +129,8 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+    networks: 
+      - dev
   firefox:
     image: selenium/node-firefox:3.141.59-yttrium
     volumes:
@@ -135,6 +140,8 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
+    networks: 
+      - dev
   jms:
     image: u03013112/jms
     container_name: jms
@@ -142,3 +149,5 @@ services:
       - selenium-hub
     # ports:
     #   - "28000:28000"
+    networks: 
+      - dev
