@@ -10,7 +10,7 @@ services:
     image: u03013112/ss-gateway
     container_name: 'gateway'
     tty: true
-    restart: always
+    # restart: always
     ports:
       - 18021:8081
     networks:
@@ -23,7 +23,7 @@ services:
   config:
     image: u03013112/ss-config
     container_name: 'config'
-    restart: always
+    # restart: always
     depends_on: 
       - mysql
     tty: true
@@ -37,7 +37,7 @@ services:
   user:
     image: u03013112/ss-user
     container_name: 'user'
-    restart: always
+    # restart: always
     depends_on: 
       - mysql
     tty: true
@@ -51,7 +51,7 @@ services:
   ios:
     image: u03013112/ss-ios
     container_name: 'ios'
-    restart: always
+    # restart: always
     depends_on: 
       - mysql
     tty: true
@@ -67,7 +67,7 @@ services:
   android:
     image: u03013112/ss-android
     container_name: 'android'
-    restart: always
+    # restart: always
     depends_on: 
       - mysql
     tty: true
@@ -91,7 +91,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=!@#sspaas@U0
       - MYSQL_DATABASE=ss_main
-    restart: always
+    # restart: always
     ports:
       - 127.0.0.1:3306:3306
     networks: 
@@ -99,7 +99,7 @@ services:
   nginx:
     image: nginx:alpine
     container_name: 'ng4ss'
-    restart: always
+    # restart: always
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d
       - ./htmls:/www/htmls
@@ -115,10 +115,7 @@ services:
 
   selenium-hub:
     image: selenium/hub:3.141.59-yttrium
-    # container_name: selenium-hub
-    restart: always
-    # ports:
-    #   - "4443:4444"
+    # restart: always
     networks: 
       - dev
   # chrome:
@@ -134,7 +131,7 @@ services:
   #     - dev
   firefox:
     image: selenium/node-firefox:3.141.59-yttrium
-    restart: always
+    # restart: always
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
@@ -147,7 +144,7 @@ services:
     mem_limit: 200M
   jms:
     image: u03013112/jms
-    restart: always
+    # restart: always
     container_name: jms
     depends_on:
       - selenium-hub
