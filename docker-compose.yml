@@ -80,6 +80,22 @@ services:
       options:
         max-size: "10m"
         max-file: "1"
+  tester:
+    image: u03013112/ss-tester
+    container_name: 'tester'
+    # restart: always
+    depends_on: 
+      - mysql
+    tty: true
+    environment:
+      - SANDBOX=TRUE
+    networks:
+      - dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
   
   mysql:
     image: mysql:5
