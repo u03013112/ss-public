@@ -129,13 +129,14 @@ services:
         max-size: "10m"
         max-file: "1"
 
-  selenium-hub:
-    image: selenium/hub:3.141.59-yttrium
-    # restart: always
-    networks: 
-      - dev
-  # chrome:
-  #   image: selenium/node-chrome:3.141.59-yttrium
+  # selenium-hub:
+  #   image: selenium/hub:3.141.59-yttrium
+  #   # restart: always
+  #   networks: 
+  #     - dev
+  # firefox:
+  #   image: selenium/node-firefox:3.141.59-yttrium
+  #   # restart: always
   #   volumes:
   #     - /dev/shm:/dev/shm
   #   depends_on:
@@ -145,26 +146,14 @@ services:
   #     - HUB_PORT=4444
   #   networks: 
   #     - dev
-  firefox:
-    image: selenium/node-firefox:3.141.59-yttrium
-    # restart: always
-    volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
-    environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
-    networks: 
-      - dev
-    mem_limit: 200M
-  jms:
-    image: u03013112/jms
-    # restart: always
-    container_name: jms
-    depends_on:
-      - selenium-hub
-    # ports:
-    #   - "28000:28000"
-    networks: 
-      - dev
+  #   mem_limit: 200M
+  # jms:
+  #   image: u03013112/jms
+  #   # restart: always
+  #   container_name: jms
+  #   depends_on:
+  #     - selenium-hub
+  #   # ports:
+  #   #   - "28000:28000"
+  #   networks: 
+  #     - dev
